@@ -67,3 +67,13 @@ def update_user(db: Session, userid: str, user_in: UserUpdate) -> User | None:
 
     db.refresh(user)
     return user
+
+def delete_user(db: Session, userid: str) -> bool:      # 지웠으면 True, 못 찾았으면 False
+    user = get_user(db, userid)                         # 위에 이미 있는 get_user로 아이디 찾기 (같은 코드 다시 안 씀)
+
+    if user is None:                                    # 그런 회원이 없으면
+        return False                                    # "못 찾았다"만 알림 (오류 번호는 라우터가 정함)
+
+    db.delete(user)                                     # 이 회원 줄을 지우라고 표시
+    db.commit()                                         # DB에 확정
+    return True                                         # "지웠다"
