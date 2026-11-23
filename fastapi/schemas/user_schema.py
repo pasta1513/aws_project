@@ -2,7 +2,7 @@ from pydantic import BaseModel, EmailStr, Field, ConfigDict
 
 # API 요청과 응답에 사용할 데이터 형식을 정의
 class UserCreate(BaseModel):
-    userid: str = Field(min_length=2, max_length=20, pattern=r'^[a-zA-Z0-9]+$')
+    userid: str = Field(min_length=2, max_length=20, pattern=r'^[a-zA-Z0-9]+$') # 영문 대소문자와 숫자만 가능
     password: str = Field(min_length=4, max_length=24)
     email: EmailStr
     name: str = Field(min_length=1, max_length=50)
