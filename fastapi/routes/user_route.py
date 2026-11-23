@@ -53,3 +53,13 @@ def update_user(userid: str, user_in: UserUpdate, db: Session = Depends(get_db))
         )
 
     return user
+
+@user_router.delete('/{userid}', status_code=status.HTTP_204_NO_CONTENT)
+def delete_user(userid: str, db: Session = Depends(get_db)) -> None:
+    deleted = user_service.delete_user(db, userid)
+
+    if not deleted:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail='사용자를 찾을 수 없습니다.'
+        )
