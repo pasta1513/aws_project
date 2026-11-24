@@ -8,7 +8,7 @@ from services.meal_service import DuplicatMealError, UserNotFoundError
 
 meal_router = APIRouter(tags=['Meal'])
 
-@meal_router.post('/{user_id}/{type}', status_code=status.HTTP_201_CREATED)
+@meal_router.post('/', status_code=status.HTTP_201_CREATED)
 def create_meal(meal_in: MealCreate, db: Session = Depends(get_db)) -> MealResponse:
     try:
         return meal_service.create_meal(db, meal_in)

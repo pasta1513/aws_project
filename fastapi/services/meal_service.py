@@ -1,9 +1,9 @@
-import bcrypt
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import IntegrityError
 
 from schemas.meal_schema import MealCreate
 from models.meal_model import Meal
+from models.user_model import User
 
 class DuplicatMealError(Exception):
     pass
