@@ -20,7 +20,7 @@ erDiagram
     meals {
         INTEGER id PK "autoincrement"
         INTEGER user_id FK "users.id, ON DELETE CASCADE"
-        VARCHAR(10) type "MealType"
+        ENUM type "MealType"
         VARCHAR(255) menu
         DATE date
     }
@@ -44,7 +44,7 @@ erDiagram
 |---|---|---|---|
 | `id` | INTEGER | PK, AUTO INCREMENT | 내부 식별자 |
 | `user_id` | INTEGER | NOT NULL, FK → `users.id` (ON DELETE CASCADE) | 식단을 등록한 사용자 |
-| `type` | VARCHAR(10) | NOT NULL | 식사 구분 (`MealType`) |
+| `type` | ENUM | NOT NULL | 식사 구분 (`MealType`) |
 | `menu` | VARCHAR(255) | NOT NULL | 메뉴 |
 | `date` | DATE | NOT NULL | 식사 날짜 |
 
@@ -53,7 +53,7 @@ erDiagram
 
 #### `MealType`
 
-`native_enum=False` 이므로 DB enum 타입이 아닌 문자열(VARCHAR)로 저장됩니다.
+DB의 네이티브 `ENUM` 타입으로 저장되며, 정의된 값 외에는 DB 수준에서 거부됩니다.
 
 | 값 | 의미 |
 |---|---|

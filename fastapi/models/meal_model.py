@@ -19,6 +19,6 @@ class Meal(Base):
 
     id: Mapped[int] = mapped_column(Integer, autoincrement=True, primary_key=True)
     user_id: Mapped[int] = mapped_column(ForeignKey('users.id', ondelete='CASCADE'))
-    type: Mapped[MealType] = mapped_column(Enum(MealType, native_enum=False, length=10))
+    type: Mapped[MealType] = mapped_column(Enum(MealType, native_enum=True, length=10))
     menu: Mapped[str] = mapped_column(String(255))
     date: Mapped[datetime.date] = mapped_column(Date)
