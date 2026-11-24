@@ -12,6 +12,8 @@ from models.menu_model import Menu
 class UserNotFoundError(Exception):
     pass
 
+#에러를 정의해놓은 이유는 어떤 에러를 정의할 지 정하기 위함
+
 
 # 전체 조회: SELECT * FROM menu
 def get_menus(db: Session) -> list[Menu]:
@@ -25,7 +27,7 @@ def get_menu(db: Session, menuid: int) -> Menu | None:
 
 
 # 등록: INSERT INTO menu (...) VALUES (...)
-def create_menu(db: Session, menu_in: MenuCreate) -> Menu:
+def create_menu(db: Session, menu_in: MenuCreate) -> Menu: # 사용자가 하루에 한 식사만 올릴 수 있음
     # 1. 스키마(요청 데이터) → 모델(DB 테이블 객체)로 옮겨 담기
     menu = Menu(
         userid=menu_in.userid,
@@ -48,7 +50,7 @@ def create_menu(db: Session, menu_in: MenuCreate) -> Menu:
 
     # 4. DB가 만들어준 값(menuid 같은 자동 증가 값)을 객체에 다시 채워 넣기
     db.refresh(menu)
-    return menu
+    return menu #menuResponse를 받아야함
 
 def delete_menu(db: Session,menu_id: int,userid:str ) -> Menu | None:
     menu_id = db.query(Menu).filter(Menu.menuid == menu_id, Menu.userid == userid).first()

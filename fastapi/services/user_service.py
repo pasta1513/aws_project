@@ -73,7 +73,8 @@ def update_user(db: Session, userid: str, user_in: UserUpdate) -> User | None:
     db.refresh(user)
     return user
 
-def delete_user(db: Session, userid: str) -> User | None:
+def delete_user(db: Session, userid: str) -> User | None: #userid가 아닌 id임 (삭제 및 참조는 pk를 다룸)
+    #삭제 타입은 bool로 줘야함 T / F
     user = db.query(User).filter(User.userid == userid).first()
     if user is None:
         return None
