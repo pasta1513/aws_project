@@ -37,9 +37,30 @@ def create_meal(db: Session, meal_in: MealCreate) -> Meal:
 
     try:
         db.commit()
+    # 무결성 오류 검증(타입에 맞지 않은 형식) & 동시성 문제 방지
     except IntegrityError:
         db.rollback()
         raise DuplicatMealError()
 
     db.refresh(meal)
     return meal
+
+# limit/offset은 추후에 추가?
+def get_all_meals(db: Session) -> list[Meal]:
+    return (db.query(Meal)
+                .order_by(Meal.date.desc(), Meal.id.desc())
+                .all()
+            )
+
+def get_user_meals(db: Session, user_id: int) -> list[Meal]:
+    return (db.query(Meal)
+                .filter(Meal.user_id == user_id)
+                .order_by(Meal.date.desc())
+                .all()
+            )
+
+def get_meal(db: Session, meal_id: int, user_id: int) -> Meal | None:
+    return (db.query(Meal)
+                .filter(Meal.id == meal_id, Meal.user_id == user_id)
+                .first()
+            )
