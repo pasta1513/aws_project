@@ -9,7 +9,7 @@ class Menu(Base):
     __tablename__ = 'menu'
 
     id: Mapped[int] = mapped_column(Integer, autoincrement=True, primary_key=True)
-    users_id: Mapped[int] = mapped_column(ForeignKey('user_id', ondelete='CASCADE'))
+    user_id: Mapped[int] = mapped_column(ForeignKey('user.id', ondelete='CASCADE'))
     #ondelete='CASCADE' -> 회원이 삭제되면 그 회원의 글도 같이 삭제됨
     menu_type: Mapped[str] = mapped_column(String(10))
     summary: Mapped[str] = mapped_column(String(100))

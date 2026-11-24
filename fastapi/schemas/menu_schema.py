@@ -17,3 +17,8 @@ class MenuResponse(BaseModel):
     date : datetime
 
     model_config = ConfigDict(from_attributes=True)
+
+class MenuUpdate(BaseModel):
+    menu_type : Literal['아침', '점심', '저녁', '야식', '간식']
+    summary : str = Field(min_length=1, max_length=100)
+    date : datetime
