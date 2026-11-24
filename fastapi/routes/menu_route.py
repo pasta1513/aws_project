@@ -45,5 +45,12 @@ def get_menu(menuid: int,db: Session = Depends(get_db)) -> MenuResponse:
 
 
 #식단 삭제
-# @menu_router.delete('/{menuid}',status_code=status)
-# def delec
+@menu_router.delete('/{menuid}',status_code=status.HTTP_204_NO_CONTENT)
+def delete_menu(menuid: int,userid:str,db: Session = Depends(get_db)):
+    menu = menu_service.delete_menu(db,menuid,userid)
+
+    if menu is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail='식단을 찾을 수 없습니다.'
+        )

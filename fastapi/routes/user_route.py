@@ -63,7 +63,7 @@ def delete_user(userid:str, db: Session=Depends(get_db)):
     except UserHasMenuError:
         raise HTTPException(
             status_code=status.HTTP_409_CONFLICT,
-            detail="메뉴 삭제 ㄱㄱ"
+            detail="메뉴부터 삭제 하세요."
         )
     if user is None:
         raise HTTPException(

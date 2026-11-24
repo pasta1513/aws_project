@@ -49,3 +49,12 @@ def create_menu(db: Session, menu_in: MenuCreate) -> Menu:
     # 4. DB가 만들어준 값(menuid 같은 자동 증가 값)을 객체에 다시 채워 넣기
     db.refresh(menu)
     return menu
+
+def delete_menu(db: Session,menu_id: int,userid:str ) -> Menu | None:
+    menu_id = db.query(Menu).filter(Menu.menuid == menu_id, Menu.userid == userid).first()
+    if menu_id is None:
+        return None
+    db.delete(menu_id)
+    db.commit()
+    return menu_id
+
