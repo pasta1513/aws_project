@@ -10,6 +10,9 @@ from models.user_model import User
 class DuplicateUserError(Exception):
     pass
 
+class UserHasMenuError(Exception):
+    pass
+
 def get_users(db: Session) -> list[User]:
     # ORM 객체를 그대로 반환하면 라우트의 반환 타입(list[UserResponse])이
     # from_attributes 설정에 따라 Pydantic 객체로 변환해 줌
@@ -68,4 +71,19 @@ def update_user(db: Session, userid: str, user_in: UserUpdate) -> User | None:
         raise DuplicateUserError()
 
     db.refresh(user)
+    return user
+
+def delete_user(db: Session, userid: str) -> User | None:
+    user = db.query(User).filter(User.userid == userid).first()
+    if user is None:
+        return None
+
+    db.delete(user)
+    try:
+        db.commit()
+    except IntegrityError:
+        db.rollback()
+        raise UserHasMenuError()
+
+
     return user

@@ -42,3 +42,8 @@ def get_menu(menuid: int,db: Session = Depends(get_db)) -> MenuResponse:
         )
 
     return menu
+
+
+#식단 삭제
+# @menu_router.delete('/{menuid}',status_code=status)
+# def delec

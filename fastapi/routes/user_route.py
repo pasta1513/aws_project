@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 from connection import get_db
 from schemas.user_schema import UserCreate, UserResponse, UserUpdate
 from services import user_service
-from services.user_service import DuplicateUserError
+from services.user_service import DuplicateUserError,UserHasMenuError
 
 user_router = APIRouter(tags=['User'])
 
@@ -53,3 +53,20 @@ def update_user(userid: str, user_in: UserUpdate, db: Session = Depends(get_db))
         )
 
     return user
+
+
+# 회원 삭제
+@user_router.delete('/{userid}',status_code=status.HTTP_204_NO_CONTENT)
+def delete_user(userid:str, db: Session=Depends(get_db)):
+    try:
+        user = user_service.delete_user(db, userid)
+    except UserHasMenuError:
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail="메뉴 삭제 ㄱㄱ"
+        )
+    if user is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail='없는 회원 입니다.'
+        )
