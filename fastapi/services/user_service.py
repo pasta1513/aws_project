@@ -27,7 +27,8 @@ def create_user(db: Session, user_in: UserCreate) -> User | None:
     )
 
     if exist:
-        return None
+        # return None
+        raise DuplicateUserError()
 
     user = User(
         userid = user_in.userid,
@@ -41,7 +42,8 @@ def create_user(db: Session, user_in: UserCreate) -> User | None:
         db.commit()
     except IntegrityError:
         db.rollback()
-        return DuplicateUserError()
+        # return DuplicateUserError()
+        raise DuplicateUserError()
 
     db.refresh(user)
     return user
