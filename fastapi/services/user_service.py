@@ -18,7 +18,7 @@ def get_users(db: Session) -> list[User]:
 def hash_password(password: str) -> str:
     return bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
 
-def create_user(db: Session, user_in: UserCreate) -> User | None:
+def create_user(db: Session, user_in: UserCreate) -> User:
     email = user_in.email.lower()
     exist = (
         db.query(User)
@@ -27,7 +27,7 @@ def create_user(db: Session, user_in: UserCreate) -> User | None:
     )
 
     if exist:
-        return None
+        raise DuplicateUserError()
 
     user = User(
         userid = user_in.userid,
@@ -41,7 +41,7 @@ def create_user(db: Session, user_in: UserCreate) -> User | None:
         db.commit()
     except IntegrityError:
         db.rollback()
-        return DuplicateUserError()
+        raise DuplicateUserError()
 
     db.refresh(user)
     return user
