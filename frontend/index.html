@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>식단 기록</title>
+  <script src="js/api.js"></script>
+  <script>
+    // 로그인 상태면 메인, 아니면 회원가입 화면으로 이동
+    location.replace(session.get() ? 'main.html' : 'signup.html');
+  </script>
+</head>
+<body></body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입 | 식단 기록</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-page">
+  <main class="card auth-card">
+    <h1>회원가입</h1>
+
+    <form id="signup-form" novalidate>
+      <label class="field">
+        <span>이름</span>
+        <input name="name" placeholder="홍길동" maxlength="50" required>
+      </label>
+      <label class="field">
+        <span>아이디</span>
+        <input name="userid" placeholder="영문, 숫자 2~20자" maxlength="20" autocomplete="username" required>
+      </label>
+      <label class="field">
+        <span>이메일</span>
+        <input name="email" type="email" placeholder="name@example.com" required>
+      </label>
+      <label class="field">
+        <span>비밀번호</span>
+        <input name="password" type="password" placeholder="4~24자" maxlength="24" autocomplete="new-password" required>
+      </label>
+
+      <p class="error" id="error" hidden></p>
+      <button type="submit" class="btn-primary">가입하기</button>
+    </form>
+
+    <p class="switch">이미 계정이 있나요? <a href="login.html">로그인</a></p>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/signup.js"></script>
+</body>
+</html>
