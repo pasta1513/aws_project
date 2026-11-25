@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>식단 기록</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <span class="logo">식단 기록</span>
+    <div class="topbar-right">
+      <span id="greeting"></span>
+      <button type="button" class="btn-link" id="logout">로그아웃</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="grid">
+      <section class="card">
+        <h2>내 정보</h2>
+        <div class="profile">
+          <div class="avatar" id="avatar"></div>
+          <div>
+            <p class="profile-name" id="profile-name"></p>
+            <p class="muted" id="profile-sub"></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>식단 등록</h2>
+        <form id="meal-form" novalidate>
+          <div class="row-2">
+            <label class="field">
+              <span>날짜</span>
+              <input name="date" type="date" required>
+            </label>
+            <label class="field">
+              <span>끼니</span>
+              <select name="type" id="meal-type"></select>
+            </label>
+          </div>
+          <label class="field">
+            <span>메뉴</span>
+            <input name="menu" placeholder="제육볶음, 된장국" maxlength="255" required>
+          </label>
+
+          <p class="error" id="meal-error" hidden></p>
+          <button type="submit" class="btn-primary">등록</button>
+        </form>
+      </section>
+    </div>
+
+    <section class="card">
+      <h2>내 식단</h2>
+      <div id="meal-list"></div>
+    </section>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

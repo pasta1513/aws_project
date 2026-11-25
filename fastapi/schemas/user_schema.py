@@ -24,3 +24,7 @@ class UserUpdate(BaseModel):
     password: str = Field(min_length=4, max_length=24)
     email: EmailStr
     name: str = Field(min_length=1, max_length=50)
+
+class UserLogin(BaseModel):
+    userid: str
+    password: str
