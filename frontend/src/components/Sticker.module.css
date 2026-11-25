@@ -1,0 +1,17 @@
+.sticker {
+  display: inline-block;
+  flex: none;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* 흰 테두리를 둘러 스티커처럼 */
+.sticker svg {
+  overflow: visible;
+  filter: drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff)
+    drop-shadow(0 3px 4px rgba(38, 41, 43, 0.08));
+}
+
+.float {
+  animation: float 5s ease-in-out infinite;
+}

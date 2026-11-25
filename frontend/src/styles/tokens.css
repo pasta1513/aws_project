@@ -1,0 +1,86 @@
+/* soban design tokens — Playful Wellness
+   milky white 바탕 위에 민트 · 버터 · 피치 · 라벤더 컬러 블록.
+   식사 구분마다 고유한 색을 갖고, 화면 전체에서 같은 색으로 반복된다.
+   - Display: Fredoka (둥근 영문 · 숫자 · 워드마크)
+   - Sans   : Pretendard (한글 본문 · UI) */
+:root {
+  /* surface */
+  --bg: #fcfbf7;
+  --surface: #ffffff;
+  --cloud: #f4f2ec;
+  --line: #ebe8e0;
+  --line-strong: #dcd8ce;
+
+  /* ink */
+  --ink: #26292b;
+  --ink-soft: #4b5052;
+  --ink-mute: #858a8a;
+  --ink-faint: #b8bcba;
+
+  /* brand */
+  --mint: #2e8b6e;
+  --mint-hover: #257559;
+  --mint-soft: #c9ecdb;
+  --mint-wash: #e8f6ef;
+  --butter: #fbe39a;
+  --butter-wash: #fdf4d6;
+  --peach: #f79e87;
+  --peach-soft: #fdd2c4;
+  --peach-wash: #feece5;
+  --lavender: #d7d0f3;
+  --lavender-wash: #efecfb;
+  --pink: #f7cdd9;
+  --pink-wash: #fdebf0;
+
+  /* meal colors — 진한 색(점·텍스트) / 블록 / 옅은 바탕 */
+  --breakfast: #d9a92a;
+  --breakfast-soft: #fbe39a;
+  --breakfast-wash: #fdf4d6;
+  --lunch: #2e8b6e;
+  --lunch-soft: #bfe8d4;
+  --lunch-wash: #e8f6ef;
+  --snack: #d0637f;
+  --snack-soft: #f7cdd9;
+  --snack-wash: #fdebf0;
+  --dinner: #df6f52;
+  --dinner-soft: #fdd2c4;
+  --dinner-wash: #feece5;
+  --late_snack: #7363c4;
+  --late_snack-soft: #d7d0f3;
+  --late_snack-wash: #efecfb;
+
+  /* feedback */
+  --danger: #d1543a;
+  --danger-wash: #fdece7;
+
+  --font-sans: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo',
+    'Noto Sans KR', 'Segoe UI', sans-serif;
+  --font-round: 'Fredoka', 'Pretendard Variable', Pretendard, sans-serif;
+
+  --r-sm: 12px;
+  --r-md: 18px;
+  --r-lg: 28px;
+  --r-xl: 36px;
+  --r-pill: 999px;
+
+  --container: 1160px;
+  --gutter: 32px;
+  --header-h: 76px;
+
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@media (max-width: 860px) {
+  :root {
+    --gutter: 20px;
+    --header-h: 64px;
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --gutter: 16px;
+    --r-lg: 24px;
+  }
+}

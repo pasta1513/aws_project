@@ -1,0 +1,61 @@
+.skeleton {
+  display: block;
+  border-radius: var(--r-md);
+  background: linear-gradient(90deg, var(--cloud) 0%, #faf9f5 50%, var(--cloud) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
+.box {
+  display: grid;
+  justify-items: center;
+  padding: 56px 24px;
+  border-radius: var(--r-lg);
+  background: var(--cloud);
+  text-align: center;
+}
+
+.compact {
+  padding: 36px 20px;
+}
+
+.title {
+  margin-top: 18px;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.compact .title {
+  font-size: 17px;
+}
+
+.desc {
+  margin-top: 6px;
+  max-width: 36ch;
+  font-size: 14px;
+  color: var(--ink-mute);
+}
+
+.action {
+  margin-top: 22px;
+}
+
+.errorIcon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--danger-wash);
+  color: var(--danger);
+}

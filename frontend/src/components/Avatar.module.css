@@ -1,0 +1,12 @@
+.avatar {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  border-radius: 50%;
+  background: var(--mint-soft);
+  color: var(--mint-hover);
+  font-family: var(--font-round);
+  font-weight: 600;
+  line-height: 1;
+  user-select: none;
+}

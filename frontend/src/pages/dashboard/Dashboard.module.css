@@ -1,0 +1,1123 @@
+/* =========================================================
+   Hero — 인사 + 오늘의 기록 링
+   ========================================================= */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: stretch;
+  padding-top: 24px;
+}
+
+.hello {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 24px 0;
+}
+
+.greeting {
+  margin-top: 18px;
+  font-size: clamp(34px, 4.6vw, 52px);
+  font-weight: 800;
+  line-height: 1.22;
+  letter-spacing: -0.045em;
+}
+
+.greetingName {
+  background: linear-gradient(transparent 62%, var(--butter) 62%, var(--butter) 92%, transparent 92%);
+  padding: 0 4px;
+  margin: 0 -4px;
+}
+
+.helloSub {
+  margin-top: 14px;
+  font-size: 16px;
+  color: var(--ink-mute);
+}
+
+.heroSticker1 {
+  position: absolute;
+  top: 4px;
+  right: 14%;
+}
+
+.heroSticker2 {
+  position: absolute;
+  bottom: 12px;
+  right: 30%;
+}
+
+.ringCard {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 28px;
+  padding: 28px;
+  border-radius: var(--r-xl);
+  background: var(--mint-wash);
+}
+
+.ringWrap {
+  position: relative;
+  width: 172px;
+  height: 172px;
+}
+
+.ring {
+  width: 100%;
+  height: 100%;
+}
+
+.ring circle {
+  transition: stroke 0.4s var(--ease);
+}
+
+.ringCenter {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+}
+
+.ringNum {
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.ringNum small {
+  font-size: 20px;
+  color: var(--ink-mute);
+}
+
+.ringLabel {
+  margin-top: 4px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink-mute);
+}
+
+.ringSide {
+  display: grid;
+  gap: 20px;
+  justify-items: start;
+}
+
+.ringSkeleton {
+  min-height: 228px;
+  border-radius: var(--r-xl);
+}
+
+/* 다섯 칸이 한 줄에 들어가지 않을 때 3 + 2 로 가지런히 */
+.ringLegend {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 6px;
+}
+
+.ringLegend li {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 30px;
+  padding: 0 12px 0 10px;
+  border-radius: var(--r-pill);
+  background: rgba(255, 255, 255, 0.6);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink-faint);
+}
+
+.ringLegend i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--line-strong);
+}
+
+.ringLegend .legendOn {
+  background: #fff;
+  color: var(--ink);
+}
+
+.legendOn i {
+  background: var(--c);
+}
+
+.ringCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 46px;
+  padding: 0 20px 0 16px;
+  border-radius: var(--r-pill);
+  background: var(--mint);
+  color: #fff;
+  font-size: 14.5px;
+  font-weight: 700;
+  transition: background 0.2s var(--ease), transform 0.25s var(--spring);
+}
+
+.ringCta:hover {
+  background: var(--mint-hover);
+  transform: translateY(-2px);
+}
+
+.ringDone {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--mint);
+}
+
+/* =========================================================
+   Section
+   ========================================================= */
+.section {
+  margin-top: 72px;
+}
+
+.sectionHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin-bottom: 20px;
+}
+
+.sectionTitle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.sectionNote {
+  font-size: 13.5px;
+  color: var(--ink-mute);
+}
+
+.count {
+  display: inline-grid;
+  place-items: center;
+  min-width: 30px;
+  height: 30px;
+  padding: 0 8px;
+  border-radius: var(--r-pill);
+  background: var(--ink);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+/* =========================================================
+   Bento — 오늘의 식사 타일
+   ========================================================= */
+.bento {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.tile {
+  grid-column: span 2;
+  min-width: 0;
+}
+
+.tile_breakfast,
+.tile_lunch {
+  grid-column: span 3;
+}
+
+.tileLink {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 190px;
+  padding: 18px;
+  border-radius: var(--r-lg);
+  transition: transform 0.3s var(--spring), background 0.2s var(--ease);
+}
+
+.tileLink:hover {
+  transform: translateY(-3px);
+}
+
+.tileDone {
+  background: var(--c-soft);
+}
+
+.tileEmpty {
+  background: var(--c-wash);
+  border: 2px dashed var(--c-soft);
+}
+
+.tileHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.tileBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 12px 0 10px;
+  border-radius: var(--r-pill);
+  background: #fff;
+  color: var(--c);
+  font-size: 13.5px;
+  font-weight: 800;
+}
+
+.tileEn {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--c);
+  opacity: 0.8;
+}
+
+.tilePhoto {
+  display: block;
+  margin-top: 14px;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+
+.tile_snack .tilePhoto,
+.tile_dinner .tilePhoto,
+.tile_late_snack .tilePhoto {
+  aspect-ratio: 4 / 3;
+}
+
+.tileMenu {
+  display: block;
+  margin-top: 12px;
+  padding-right: 24px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.03em;
+}
+
+.tileArrow {
+  position: absolute;
+  right: 18px;
+  bottom: 20px;
+  color: var(--c);
+}
+
+.tileAdd {
+  flex: 1;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 10px;
+  padding: 20px 0 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink-mute);
+}
+
+.tileAddText {
+  transition: color 0.2s var(--ease);
+}
+
+.tileLink:hover .tileAddText {
+  color: var(--c);
+}
+
+.tileSkeleton {
+  min-height: 190px;
+  border-radius: var(--r-lg);
+}
+
+.tile_breakfast.tileSkeleton,
+.tile_lunch.tileSkeleton {
+  min-height: 300px;
+}
+
+.tilePlus {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--c);
+  transition: transform 0.3s var(--spring);
+}
+
+.tileLink:hover .tilePlus {
+  transform: rotate(90deg) scale(1.08);
+}
+
+/* =========================================================
+   Habits — 이번 주 + 통계
+   ========================================================= */
+.habits {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: 14px;
+  margin-top: 72px;
+}
+
+.weekBox {
+  position: relative;
+  padding: 26px 26px 24px;
+  border-radius: var(--r-xl);
+  background: var(--butter-wash);
+}
+
+.weekHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.weekHead :global(.chip) {
+  background: #fff;
+}
+
+.weekSticker {
+  position: absolute;
+  top: -18px;
+  right: 44%;
+}
+
+.week {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.day {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  padding: 12px 0 14px;
+  border-radius: 20px;
+  color: var(--ink-mute);
+  transition: background 0.2s var(--ease), transform 0.25s var(--spring);
+}
+
+a.day:hover {
+  background: rgba(255, 255, 255, 0.7);
+  transform: translateY(-2px);
+}
+
+.wd {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.dn {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.dayDone {
+  background: #fff;
+}
+
+.dayToday .dn {
+  background: var(--ink);
+  color: #fff;
+}
+
+.dayFuture {
+  opacity: 0.4;
+}
+
+.dots {
+  display: grid;
+  grid-template-columns: repeat(3, 6px);
+  gap: 3px;
+  justify-content: center;
+  min-height: 15px;
+}
+
+.dots i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(38, 41, 43, 0.08);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 18px 20px;
+  border-radius: var(--r-lg);
+}
+
+.stat dt {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+.stat dd {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+.stat dd span {
+  margin-right: 3px;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.stat_week {
+  background: var(--mint-soft);
+}
+
+.stat_streak {
+  background: var(--peach-soft);
+}
+
+.stat_days {
+  background: var(--lavender);
+}
+
+.stat_meals {
+  background: var(--pink);
+}
+
+/* =========================================================
+   Gallery — 최근 기록 (사진 중심)
+   ========================================================= */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.gallery > li {
+  min-width: 0;
+}
+
+.shot0 {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.gallery1 .shot0 {
+  grid-row: auto;
+}
+
+.gallery2 > li,
+.gallery3 .shot1,
+.gallery3 .shot2,
+.gallery4 .shot1 {
+  grid-column: span 2;
+}
+
+.gallery2 .shot0 {
+  grid-row: auto;
+}
+
+.shot {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.shotPhoto {
+  position: relative;
+  display: block;
+  flex: 1;
+  min-height: 0;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+}
+
+.shot0 .shotPhoto {
+  aspect-ratio: auto;
+  min-height: 300px;
+}
+
+.gallery2 .shotPhoto,
+.gallery3 .shot1 .shotPhoto,
+.gallery3 .shot2 .shotPhoto,
+.gallery4 .shot1 .shotPhoto,
+.gallery1 .shotPhoto {
+  aspect-ratio: 2 / 1;
+  min-height: 0;
+}
+
+.shotPhoto svg {
+  transition: transform 0.6s var(--ease);
+}
+
+.shot:hover .shotPhoto svg {
+  transform: scale(1.05);
+}
+
+.shotDate {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 30px;
+  padding: 0 12px;
+  border-radius: var(--r-pill);
+  background: #fff;
+  font-size: 12.5px;
+  font-weight: 800;
+}
+
+.shotDate em {
+  font-style: normal;
+  color: var(--c);
+}
+
+.shotBody {
+  display: grid;
+  gap: 8px;
+  padding: 12px 4px 0;
+}
+
+.shotMenu {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.03em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.shot0 .shotMenu {
+  font-size: 20px;
+  white-space: normal;
+}
+
+.shotTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.shotTags span {
+  height: 24px;
+  padding: 0 9px;
+  border-radius: var(--r-pill);
+  background: var(--c-wash);
+  color: var(--c);
+  font-size: 11.5px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+/* =========================================================
+   Timeline — 모든 기록
+   ========================================================= */
+.month + .month {
+  margin-top: 28px;
+}
+
+.monthLabel {
+  display: inline-block;
+  margin: 0 0 8px 4px;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--ink-mute);
+}
+
+.list {
+  display: grid;
+  gap: 4px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 56px 64px minmax(0, 1fr) auto 20px;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 14px 10px 10px;
+  border-radius: 24px;
+  transition: background 0.2s var(--ease);
+}
+
+.row:hover {
+  background: var(--cloud);
+}
+
+.rowDate {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  background: var(--c-wash);
+  color: var(--c);
+}
+
+.rowDate span {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.rowDate small {
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.rowThumb {
+  display: block;
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.rowBody {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.rowMenu {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  font-size: 15.5px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rowRel {
+  flex: none;
+  font-style: normal;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--peach);
+}
+
+.rowDots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-mute);
+}
+
+.rowDots span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.rowDots i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--c);
+}
+
+.rowCount {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--ink-mute);
+  white-space: nowrap;
+}
+
+.rowCount span {
+  margin-right: 2px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.rowArrow {
+  color: var(--ink-faint);
+  transition: transform 0.25s var(--spring), color 0.2s var(--ease);
+}
+
+.row:hover .rowArrow {
+  color: var(--ink);
+  transform: translateX(3px);
+}
+
+.more {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.moreCount {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink-mute);
+}
+
+/* =========================================================
+   First record — 기록이 없을 때
+   ========================================================= */
+.first {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 40px;
+  align-items: center;
+  margin-top: 40px;
+  padding: 28px;
+  border-radius: var(--r-xl);
+  background: var(--cloud);
+}
+
+.firstVisual {
+  position: relative;
+  aspect-ratio: 4 / 3;
+}
+
+.firstVisual > div:first-child {
+  border-radius: var(--r-lg);
+}
+
+.firstS1 {
+  position: absolute;
+  top: -18px;
+  left: -14px;
+}
+
+.firstS2 {
+  position: absolute;
+  right: -16px;
+  bottom: 18%;
+}
+
+.firstS3 {
+  position: absolute;
+  bottom: -18px;
+  left: 22%;
+}
+
+.firstTitle {
+  margin-top: 16px;
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: -0.045em;
+}
+
+.firstDesc {
+  margin-top: 12px;
+  max-width: 38ch;
+  font-size: 15px;
+  color: var(--ink-mute);
+}
+
+.firstCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 28px;
+  height: 52px;
+  padding: 0 24px;
+  border-radius: var(--r-pill);
+  background: var(--mint);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  transition: background 0.2s var(--ease), transform 0.25s var(--spring);
+}
+
+.firstCta:hover {
+  background: var(--mint-hover);
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+@media (max-width: 1000px) {
+  .ringCard {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    text-align: center;
+  }
+
+  .ringSide {
+    justify-items: center;
+  }
+
+  .ringLegend {
+    grid-template-columns: repeat(5, auto);
+    justify-content: center;
+  }
+}
+
+@media (max-width: 860px) {
+  .hero,
+  .habits,
+  .first {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hello {
+    padding: 8px 0 0;
+  }
+
+  .heroSticker1 {
+    top: 0;
+    right: 0;
+  }
+
+  .heroSticker2 {
+    display: none;
+  }
+
+  .ringCard {
+    grid-template-columns: auto minmax(0, 1fr);
+    justify-items: stretch;
+    text-align: left;
+    gap: 18px;
+    padding: 20px;
+  }
+
+  .ringWrap {
+    width: 128px;
+    height: 128px;
+  }
+
+  .ringNum {
+    font-size: 36px;
+  }
+
+  .ringSide {
+    justify-items: start;
+  }
+
+  .ringLegend {
+    justify-content: flex-start;
+  }
+
+  .section,
+  .habits {
+    margin-top: 52px;
+  }
+
+  .bento {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .tile,
+  .tile_breakfast,
+  .tile_lunch {
+    grid-column: span 1;
+  }
+
+  .tile_late_snack {
+    grid-column: span 2;
+  }
+
+  .tileLink {
+    min-height: 160px;
+    padding: 14px;
+  }
+
+  .tileEn {
+    display: none;
+  }
+
+  .tileMenu {
+    font-size: 14.5px;
+  }
+
+  /* 빈 끼니는 낮게 — 기록한 끼니가 먼저 눈에 들어오도록 */
+  .tileEmpty {
+    min-height: 128px;
+  }
+
+  .tileAdd {
+    gap: 8px;
+    padding: 12px 0 2px;
+    font-size: 13px;
+  }
+
+  .tilePlus {
+    width: 38px;
+    height: 38px;
+  }
+
+  .tile_late_snack .tileEmpty {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 0;
+  }
+
+  .tile_late_snack .tileAdd {
+    flex: none;
+    grid-auto-flow: column;
+    align-items: center;
+    padding: 0;
+  }
+
+  .tile_late_snack .tilePlus {
+    order: 2;
+    width: 34px;
+    height: 34px;
+  }
+
+  .tileSkeleton,
+  .tile_breakfast.tileSkeleton,
+  .tile_lunch.tileSkeleton {
+    min-height: 200px;
+  }
+
+  .tile_late_snack.tileSkeleton {
+    min-height: 64px;
+  }
+
+  /* 최근 기록은 가로로 넘겨 보기 */
+  .gallery {
+    display: flex;
+    gap: 12px;
+    margin: 0 calc(var(--gutter) * -1);
+    padding: 0 var(--gutter) 4px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    scrollbar-width: none;
+  }
+
+  .gallery::-webkit-scrollbar {
+    display: none;
+  }
+
+  .gallery > li {
+    flex: none;
+    width: 72%;
+    scroll-snap-align: start;
+  }
+
+  .gallery .shotPhoto,
+  .shot0 .shotPhoto {
+    flex: none;
+    aspect-ratio: 4 / 3 !important;
+    min-height: 0;
+  }
+
+  .shot0 .shotMenu {
+    font-size: 16px;
+  }
+
+  .first {
+    padding: 20px;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 600px) {
+  .ringCard {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    text-align: center;
+  }
+
+  .ringSide {
+    justify-items: center;
+  }
+
+  .ringLegend {
+    justify-content: center;
+  }
+
+  .weekBox {
+    padding: 20px 14px 16px;
+  }
+
+  .weekHead {
+    padding: 0 6px;
+  }
+
+  .week {
+    gap: 2px;
+  }
+
+  .dn {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+
+  .dots {
+    grid-template-columns: repeat(3, 5px);
+    gap: 2px;
+  }
+
+  .dots i {
+    width: 5px;
+    height: 5px;
+  }
+
+  .stat dd span {
+    font-size: 32px;
+  }
+
+  .row {
+    grid-template-columns: 48px 52px minmax(0, 1fr) auto;
+    gap: 12px;
+    padding: 8px;
+  }
+
+  .rowDate {
+    width: 48px;
+    height: 48px;
+    border-radius: 16px;
+  }
+
+  .rowThumb {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+  }
+
+  .rowArrow {
+    display: none;
+  }
+}

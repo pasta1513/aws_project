@@ -1,0 +1,17 @@
+.logo {
+  display: inline-flex;
+  align-items: baseline;
+  font-family: var(--font-round);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+}
+
+.dot {
+  width: 0.24em;
+  height: 0.24em;
+  margin-left: 0.06em;
+  border-radius: 50%;
+  background: var(--peach);
+}
