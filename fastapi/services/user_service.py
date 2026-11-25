@@ -49,6 +49,17 @@ def create_user(db: Session, user_in: UserCreate) -> User:
 def get_user(db: Session, userid: str) -> User | None:
     return db.query(User).filter(User.userid == userid).first()
 
+def verify_password(password: str, hashed: str) -> str:
+    return bcrypt.checkpw(password.encode(), hashed.encode())
+
+def authenticate_user(db: Session, userid: str, password: str) -> User:
+    user = get_user(db, userid)
+
+    if user is None or not verify_password(password, user.password):
+         return None
+
+    return user
+
 def update_user(db: Session, userid: str, user_in: UserUpdate) -> User | None:
     user = get_user(db, userid)
 

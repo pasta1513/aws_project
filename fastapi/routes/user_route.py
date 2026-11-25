@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
 from connection import get_db
-from schemas.user_schema import UserCreate, UserResponse, UserUpdate
+from schemas.user_schema import UserCreate, UserResponse, UserUpdate, UserLogin
 from services import user_service
 from services.user_service import DuplicateUserError
 
@@ -32,6 +32,18 @@ def get_user(userid: str, db: Session = Depends(get_db)) -> UserResponse:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail='사용자를 찾을 수 없습니다.'
+        )
+
+    return user
+
+@user_router.post('/login')
+def login(user_in: UserLogin, db: Session = Depends(get_db)) -> UserResponse:
+    user = user_service.authenticate_user(db, user_in.userid, user_in.password)
+
+    if user is None:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail='아이디 또는 비밀번호가 일치하지 않습니다.'
         )
 
     return user
