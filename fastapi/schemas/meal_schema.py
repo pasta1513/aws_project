@@ -11,9 +11,17 @@ class MealCreate(BaseModel):
     menu: str = Field(min_length=1, max_length=255)
     date: datetime.date
 
+# 식단 응답에 함께 보여줄 작성자 정보 (이메일 등은 노출하지 않음)
+class MealAuthor(BaseModel):
+    userid: str
+    name: str
+
+    model_config = ConfigDict(from_attributes=True)
+
 class MealResponse(BaseModel):
     id: int
     user_id: int
+    user: MealAuthor
     type: MealType
     menu: str
     date: datetime.date
