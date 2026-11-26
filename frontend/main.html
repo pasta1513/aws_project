@@ -8,26 +8,18 @@
 </head>
 <body>
   <header class="topbar">
-    <span class="logo">식단 기록</span>
+    <a href="main.html" class="logo">식단 기록</a>
     <div class="topbar-right">
-      <span id="greeting"></span>
-      <button type="button" class="btn-link" id="logout">로그아웃</button>
+      <a href="mypage.html" class="user-chip">
+        <span class="avatar avatar-sm" id="topbar-avatar"></span>
+        <span id="topbar-name"></span>
+      </a>
+      <button type="button" class="btn-link logout">로그아웃</button>
     </div>
   </header>
 
   <main class="container">
     <div class="grid">
-      <section class="card">
-        <h2>내 정보</h2>
-        <div class="profile">
-          <div class="avatar" id="avatar"></div>
-          <div>
-            <p class="profile-name" id="profile-name"></p>
-            <p class="muted" id="profile-sub"></p>
-          </div>
-        </div>
-      </section>
-
       <section class="card">
         <h2>식단 등록</h2>
         <form id="meal-form" novalidate>
@@ -50,15 +42,21 @@
           <button type="submit" class="btn-primary">등록</button>
         </form>
       </section>
+
+      <section class="card">
+        <h2>내 식단</h2>
+        <div id="my-meal-list"></div>
+      </section>
     </div>
 
     <section class="card">
-      <h2>내 식단</h2>
-      <div id="meal-list"></div>
+      <h2>모두의 식단</h2>
+      <div id="all-meal-list"></div>
     </section>
   </main>
 
   <script src="js/api.js"></script>
+  <script src="js/layout.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

@@ -14,6 +14,7 @@ app.add_middleware(
     allow_methods=['*'],
     allow_headers=['*'],
 )
+# python -m http.server 5500 --directory frontend
 
 app.include_router(user_router, prefix='/users')
 app.include_router(meal_router, prefix='/meals')

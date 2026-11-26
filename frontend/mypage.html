@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>마이페이지 - 식단 기록</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a href="main.html" class="logo">식단 기록</a>
+    <div class="topbar-right">
+      <a href="mypage.html" class="user-chip">
+        <span class="avatar avatar-sm" id="topbar-avatar"></span>
+        <span id="topbar-name"></span>
+      </a>
+      <button type="button" class="btn-link logout">로그아웃</button>
+    </div>
+  </header>
+
+  <main class="container container-narrow">
+    <a href="main.html" class="back-link">← 메인으로</a>
+
+    <section class="card">
+      <h2>내 정보</h2>
+      <div class="profile">
+        <div class="avatar avatar-lg" id="profile-avatar"></div>
+        <div>
+          <p class="profile-name" id="profile-name"></p>
+          <p class="muted" id="profile-userid"></p>
+        </div>
+      </div>
+
+      <dl class="info-list">
+        <dt>아이디</dt>
+        <dd id="info-userid"></dd>
+        <dt>이메일</dt>
+        <dd id="info-email"></dd>
+      </dl>
+
+      <button type="button" class="btn-outline logout">로그아웃</button>
+    </section>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/mypage.js"></script>
+</body>
+</html>

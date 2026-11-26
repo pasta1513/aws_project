@@ -1,16 +1,7 @@
-const me = session.get();
-
-// 로그인 정보가 없으면 로그인 화면으로
-if (!me) location.replace('login.html');
-
 const mealForm = document.getElementById('meal-form');
 const mealError = document.getElementById('meal-error');
-const mealList = document.getElementById('meal-list');
-
-document.getElementById('logout').addEventListener('click', () => {
-  session.clear();
-  location.href = 'login.html';
-});
+const myMealList = document.getElementById('my-meal-list');
+const allMealList = document.getElementById('all-meal-list');
 
 // 끼니 선택 옵션 채우기
 for (const [value, label] of Object.entries(MEAL_TYPES)) {
@@ -26,39 +17,31 @@ function today() {
   return d.toISOString().slice(0, 10);
 }
 
-async function loadProfile() {
+async function loadMyMeals() {
   try {
-    const user = await request(`/users/${encodeURIComponent(me.userid)}`);
-
-    document.getElementById('greeting').textContent = `${user.name}님`;
-    document.getElementById('avatar').textContent = user.name.charAt(0);
-    document.getElementById('profile-name').textContent = user.name;
-    document.getElementById('profile-sub').textContent = `${user.userid} · ${user.email}`;
+    const meals = await request(`/meals/user/${me.id}`);
+    renderMeals(myMealList, meals, { emptyMessage: '아직 등록한 식단이 없습니다. 첫 식단을 등록해 보세요.' });
   } catch (err) {
-    // 탈퇴 등으로 사용자가 없어졌으면 저장된 정보를 지우고 다시 로그인
-    if (err.status === 404) {
-      session.clear();
-      location.replace('login.html');
-    }
+    myMealList.replaceChildren(emptyText(err.message));
   }
 }
 
-async function loadMeals() {
+async function loadAllMeals() {
   try {
-    const meals = await request(`/meals/user/${me.id}`);
-    renderMeals(meals);
+    const meals = await request('/meals');
+    renderMeals(allMealList, meals, { showAuthor: true, emptyMessage: '아직 등록된 식단이 없습니다.' });
   } catch (err) {
-    mealList.innerHTML = '';
-    mealList.append(emptyText(err.message));
+    allMealList.replaceChildren(emptyText(err.message));
   }
 }
 
 // 날짜별로 묶고, 같은 날짜 안에서는 아침 → 간식 순으로 정렬해서 표시
-function renderMeals(meals) {
-  mealList.innerHTML = '';
+// showAuthor가 true면 각 식단 앞에 작성자(아바타 + 이름)를 함께 표시
+function renderMeals(container, meals, { showAuthor = false, emptyMessage }) {
+  container.replaceChildren();
 
   if (meals.length === 0) {
-    mealList.append(emptyText('아직 등록한 식단이 없습니다. 첫 식단을 등록해 보세요.'));
+    container.append(emptyText(emptyMessage));
     return;
   }
 
@@ -80,6 +63,8 @@ function renderMeals(meals) {
       const row = document.createElement('div');
       row.className = 'meal-row';
 
+      if (showAuthor) row.append(authorTag(meal));
+
       const badge = document.createElement('span');
       badge.className = `badge badge-${meal.type}`;
       badge.textContent = MEAL_TYPES[meal.type];
@@ -91,8 +76,23 @@ function renderMeals(meals) {
       group.append(row);
     }
 
-    mealList.append(group);
+    container.append(group);
   }
+}
+
+function authorTag(meal) {
+  const author = document.createElement('span');
+  author.className = 'meal-author';
+
+  const avatar = document.createElement('span');
+  avatar.className = 'avatar avatar-xs';
+  avatar.textContent = avatarText(meal.user.name);
+
+  const name = document.createElement('span');
+  name.textContent = meal.user_id === me.id ? `${meal.user.name} (나)` : meal.user.name;
+
+  author.append(avatar, name);
+  return author;
 }
 
 function emptyText(message) {
@@ -124,7 +124,7 @@ mealForm.addEventListener('submit', async (e) => {
     });
 
     mealForm.menu.value = '';
-    await loadMeals();
+    await Promise.all([loadMyMeals(), loadAllMeals()]);
   } catch (err) {
     showError(mealError, err.message);
   } finally {
@@ -133,6 +133,6 @@ mealForm.addEventListener('submit', async (e) => {
 });
 
 if (me) {
-  loadProfile();
-  loadMeals();
+  loadMyMeals();
+  loadAllMeals();
 }
