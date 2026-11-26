@@ -1,5 +1,5 @@
 // 백엔드 주소 (fastapi/main.py 에서 실행하는 주소)
-const API_BASE = 'http://127.0.0.1:8080';
+const API_BASE = '/api';
 
 // 끼니 enum 값 → 화면에 보여줄 이름 (순서는 목록 정렬에도 사용)
 const MEAL_TYPES = {
