@@ -1,0 +1,68 @@
+/* React(CSS Modules) 에서 옮긴 스타일 — 클래스 이름 앞에 화면별 접두어를 붙여 충돌을 막는다 */
+
+/* ===== NotFound (.nf-*) ===== */
+.nf-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 24px;
+  padding-bottom: 48px;
+}
+
+.nf-logo {
+  align-self: flex-start;
+}
+
+.nf-body {
+  flex: 1;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  text-align: center;
+}
+
+.nf-visual {
+  position: relative;
+  width: min(420px, 100%);
+  aspect-ratio: 4 / 3;
+}
+
+.nf-visual > div:first-child {
+  border-radius: var(--r-xl);
+}
+
+.nf-code {
+  position: absolute;
+  left: 50%;
+  bottom: -22px;
+  transform: translateX(-50%);
+  padding: 4px 20px;
+  border-radius: var(--r-pill);
+  background: var(--ink);
+  color: #fff;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.nf-sticker {
+  position: absolute;
+  top: -20px;
+  right: -16px;
+}
+
+.nf-title {
+  margin-top: 48px;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+}
+
+.nf-desc {
+  margin-top: 8px;
+  font-size: 15px;
+  color: var(--ink-mute);
+}
+
+.nf-cta {
+  margin-top: 28px;
+}

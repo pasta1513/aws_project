@@ -1,0 +1,482 @@
+/* React(CSS Modules) 에서 옮긴 스타일 — 클래스 이름 앞에 화면별 접두어를 붙여 충돌을 막는다 */
+
+/* ===== DayDetail (.day-*) ===== */
+.day-page {
+  padding-top: 16px;
+}
+
+.day-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.day-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 38px;
+  padding: 0 14px 0 10px;
+  margin-left: -10px;
+  border-radius: var(--r-pill);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink-mute);
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.day-back:hover {
+  background: var(--cloud);
+  color: var(--ink);
+}
+
+/* 날짜 이동 */
+.day-dayNav {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border-radius: var(--r-pill);
+  background: var(--cloud);
+}
+
+.day-dayNavLabel {
+  min-width: 112px;
+  padding: 0 6px;
+  font-size: 14px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.day-navBtn {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--ink);
+  transition: transform 0.25s var(--spring);
+}
+
+a.navBtn:hover {
+  transform: scale(1.08);
+}
+
+.day-navOff {
+  background: transparent;
+  color: var(--ink-faint);
+}
+
+/* ---------- hero ---------- */
+.day-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 40px;
+  align-items: center;
+}
+
+.day-heroPhoto {
+  position: relative;
+  display: block;
+  aspect-ratio: 5 / 4;
+  border-radius: var(--r-xl);
+}
+
+.day-heroPhoto > div:first-child {
+  border-radius: var(--r-xl);
+}
+
+.day-sticker1 {
+  position: absolute;
+  top: -22px;
+  right: -14px;
+}
+
+.day-heroText {
+  min-width: 0;
+}
+
+.day-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.day-relChip {
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 12px;
+  border-radius: var(--r-pill);
+  background: var(--ink);
+  color: #fff;
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+.day-typeBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  margin-top: 28px;
+  padding: 0 14px 0 12px;
+  border-radius: var(--r-pill);
+  background: var(--c-soft);
+  color: var(--c);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.day-title {
+  margin-top: 14px;
+  font-size: clamp(30px, 3.8vw, 46px);
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.05em;
+}
+
+.day-summary {
+  margin-top: 16px;
+  font-size: 15px;
+  color: var(--ink-mute);
+}
+
+.day-summary strong {
+  color: var(--ink);
+}
+
+.day-meter {
+  display: flex;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.day-meter i {
+  flex: 1;
+  max-width: 48px;
+  height: 8px;
+  border-radius: var(--r-pill);
+  background: var(--cloud);
+}
+
+/* ---------- meals ---------- */
+.day-meals {
+  max-width: 760px;
+  margin: 72px auto 0;
+}
+
+.day-mealsTitle {
+  margin-bottom: 18px;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.day-timeline {
+  position: relative;
+  display: grid;
+  gap: 10px;
+}
+
+.day-item {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 14px 14px 16px;
+  border-radius: var(--r-lg);
+  background: var(--c-wash);
+}
+
+.day-itemIcon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--c);
+}
+
+.day-itemBody {
+  min-width: 0;
+}
+
+.day-itemType {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--c);
+}
+
+.day-itemType span {
+  font-size: 12px;
+  font-weight: 500;
+  opacity: 0.7;
+}
+
+.day-itemMenu {
+  margin-top: 2px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: -0.035em;
+}
+
+.day-itemThumb {
+  display: block;
+  width: 84px;
+  height: 84px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.day-itemNew {
+  animation: item-new 1.6s var(--ease) both;
+}
+
+@keyframes item-new {
+  0% {
+    box-shadow: 0 0 0 0 var(--c);
+    transform: scale(0.98);
+  }
+  30% {
+    box-shadow: 0 0 0 3px var(--c);
+    transform: scale(1);
+  }
+  100% {
+    box-shadow: 0 0 0 3px transparent;
+  }
+}
+
+.day-itemEmpty {
+  background: transparent;
+  border: 2px dashed var(--line);
+}
+
+.day-itemEmpty .day-itemIcon {
+  background: var(--cloud);
+  color: var(--ink-faint);
+}
+
+.day-itemEmpty .day-itemType {
+  color: var(--ink-mute);
+}
+
+.day-itemMissing {
+  margin-top: 2px;
+  font-size: 14px;
+  color: var(--ink-faint);
+}
+
+.day-add {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 38px;
+  padding: 0 16px 0 12px;
+  border-radius: var(--r-pill);
+  background: var(--c-soft);
+  color: var(--ink);
+  font-size: 13.5px;
+  font-weight: 700;
+  transition: transform 0.25s var(--spring);
+}
+
+.day-add:hover {
+  transform: scale(1.05);
+}
+
+.day-note {
+  margin-top: 16px;
+  font-size: 12.5px;
+  color: var(--ink-faint);
+  text-align: center;
+}
+
+/* ---------- 저장 완료 알림 ---------- */
+.day-toast {
+  position: fixed;
+  left: 50%;
+  top: calc(var(--header-h) + 12px);
+  z-index: 30;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 46px;
+  padding: 0 20px 0 16px;
+  border-radius: var(--r-pill);
+  background: var(--ink);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 0 12px 30px -12px rgba(38, 41, 43, 0.5);
+  transform: translateX(-50%);
+  animation: toast 3.2s var(--ease) both;
+}
+
+.day-toast svg {
+  color: var(--mint-soft);
+}
+
+@keyframes toast {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -12px);
+  }
+  10%,
+  85% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -8px);
+  }
+}
+
+/* ---------- 이전·다음 기록 ---------- */
+.day-pager {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  max-width: 760px;
+  margin: 48px auto 0;
+}
+
+.day-pagerCard {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px 12px 12px;
+  border-radius: var(--r-lg);
+  background: var(--cloud);
+  transition: background 0.2s var(--ease), transform 0.3s var(--spring);
+}
+
+.day-pagerCard:hover {
+  background: var(--c-wash);
+  transform: translateY(-2px);
+}
+
+.day-pagerNext {
+  grid-template-columns: minmax(0, 1fr) 64px;
+  padding: 12px 12px 12px 16px;
+  text-align: right;
+}
+
+.day-pagerNext .day-pagerThumb {
+  order: 2;
+}
+
+.day-pagerThumb {
+  display: block;
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.day-pagerText {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.day-pagerDir {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink-mute);
+}
+
+.day-pagerNext .day-pagerDir {
+  justify-content: flex-end;
+}
+
+.day-pagerDate {
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.day-pagerMenu {
+  font-size: 13px;
+  color: var(--ink-mute);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 860px) {
+  .day-hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .day-heroPhoto {
+    aspect-ratio: 4 / 3;
+  }
+
+  .day-typeBadge {
+    margin-top: 18px;
+  }
+
+  .day-meals {
+    margin-top: 48px;
+  }
+}
+
+@media (max-width: 600px) {
+  .day-dayNavLabel {
+    min-width: 0;
+    font-size: 13px;
+  }
+
+  .day-sticker1 {
+    right: 4px;
+  }
+
+  .day-item {
+    grid-template-columns: 44px minmax(0, 1fr) auto;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .day-itemIcon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .day-itemMenu {
+    font-size: 16px;
+  }
+
+  .day-itemThumb {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+  }
+
+  .day-pager {
+    gap: 8px;
+  }
+
+  .day-pagerCard,
+  .day-pagerNext {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 14px;
+  }
+
+  .day-pagerThumb {
+    display: none;
+  }
+}

@@ -1,0 +1,1126 @@
+/* React(CSS Modules) 에서 옮긴 스타일 — 클래스 이름 앞에 화면별 접두어를 붙여 충돌을 막는다 */
+
+/* ===== Dashboard (.dash-*) ===== */
+/* =========================================================
+   Hero — 인사 + 오늘의 기록 링
+   ========================================================= */
+.dash-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: stretch;
+  padding-top: 24px;
+}
+
+.dash-hello {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 24px 0;
+}
+
+.dash-greeting {
+  margin-top: 18px;
+  font-size: clamp(34px, 4.6vw, 52px);
+  font-weight: 800;
+  line-height: 1.22;
+  letter-spacing: -0.045em;
+}
+
+.dash-greetingName {
+  background: linear-gradient(transparent 62%, var(--butter) 62%, var(--butter) 92%, transparent 92%);
+  padding: 0 4px;
+  margin: 0 -4px;
+}
+
+.dash-helloSub {
+  margin-top: 14px;
+  font-size: 16px;
+  color: var(--ink-mute);
+}
+
+.dash-heroSticker1 {
+  position: absolute;
+  top: 4px;
+  right: 14%;
+}
+
+.dash-heroSticker2 {
+  position: absolute;
+  bottom: 12px;
+  right: 30%;
+}
+
+.dash-ringCard {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 28px;
+  padding: 28px;
+  border-radius: var(--r-xl);
+  background: var(--mint-wash);
+}
+
+.dash-ringWrap {
+  position: relative;
+  width: 172px;
+  height: 172px;
+}
+
+.dash-ring {
+  width: 100%;
+  height: 100%;
+}
+
+.dash-ring circle {
+  transition: stroke 0.4s var(--ease);
+}
+
+.dash-ringCenter {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+}
+
+.dash-ringNum {
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.dash-ringNum small {
+  font-size: 20px;
+  color: var(--ink-mute);
+}
+
+.dash-ringLabel {
+  margin-top: 4px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink-mute);
+}
+
+.dash-ringSide {
+  display: grid;
+  gap: 20px;
+  justify-items: start;
+}
+
+.dash-ringSkeleton {
+  min-height: 228px;
+  border-radius: var(--r-xl);
+}
+
+/* 다섯 칸이 한 줄에 들어가지 않을 때 3 + 2 로 가지런히 */
+.dash-ringLegend {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 6px;
+}
+
+.dash-ringLegend li {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 30px;
+  padding: 0 12px 0 10px;
+  border-radius: var(--r-pill);
+  background: rgba(255, 255, 255, 0.6);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink-faint);
+}
+
+.dash-ringLegend i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--line-strong);
+}
+
+.dash-ringLegend .dash-legendOn {
+  background: #fff;
+  color: var(--ink);
+}
+
+.dash-legendOn i {
+  background: var(--c);
+}
+
+.dash-ringCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 46px;
+  padding: 0 20px 0 16px;
+  border-radius: var(--r-pill);
+  background: var(--mint);
+  color: #fff;
+  font-size: 14.5px;
+  font-weight: 700;
+  transition: background 0.2s var(--ease), transform 0.25s var(--spring);
+}
+
+.dash-ringCta:hover {
+  background: var(--mint-hover);
+  transform: translateY(-2px);
+}
+
+.dash-ringDone {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--mint);
+}
+
+/* =========================================================
+   Section
+   ========================================================= */
+.dash-section {
+  margin-top: 72px;
+}
+
+.dash-sectionHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin-bottom: 20px;
+}
+
+.dash-sectionTitle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.dash-sectionNote {
+  font-size: 13.5px;
+  color: var(--ink-mute);
+}
+
+.dash-count {
+  display: inline-grid;
+  place-items: center;
+  min-width: 30px;
+  height: 30px;
+  padding: 0 8px;
+  border-radius: var(--r-pill);
+  background: var(--ink);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+/* =========================================================
+   Bento — 오늘의 식사 타일
+   ========================================================= */
+.dash-bento {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.dash-tile {
+  grid-column: span 2;
+  min-width: 0;
+}
+
+.dash-tile_breakfast,
+.dash-tile_lunch {
+  grid-column: span 3;
+}
+
+.dash-tileLink {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 190px;
+  padding: 18px;
+  border-radius: var(--r-lg);
+  transition: transform 0.3s var(--spring), background 0.2s var(--ease);
+}
+
+.dash-tileLink:hover {
+  transform: translateY(-3px);
+}
+
+.dash-tileDone {
+  background: var(--c-soft);
+}
+
+.dash-tileEmpty {
+  background: var(--c-wash);
+  border: 2px dashed var(--c-soft);
+}
+
+.dash-tileHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.dash-tileBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 12px 0 10px;
+  border-radius: var(--r-pill);
+  background: #fff;
+  color: var(--c);
+  font-size: 13.5px;
+  font-weight: 800;
+}
+
+.dash-tileEn {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--c);
+  opacity: 0.8;
+}
+
+.dash-tilePhoto {
+  display: block;
+  margin-top: 14px;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+
+.dash-tile_snack .dash-tilePhoto,
+.dash-tile_dinner .dash-tilePhoto,
+.dash-tile_late_snack .dash-tilePhoto {
+  aspect-ratio: 4 / 3;
+}
+
+.dash-tileMenu {
+  display: block;
+  margin-top: 12px;
+  padding-right: 24px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.03em;
+}
+
+.dash-tileArrow {
+  position: absolute;
+  right: 18px;
+  bottom: 20px;
+  color: var(--c);
+}
+
+.dash-tileAdd {
+  flex: 1;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 10px;
+  padding: 20px 0 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink-mute);
+}
+
+.dash-tileAddText {
+  transition: color 0.2s var(--ease);
+}
+
+.dash-tileLink:hover .dash-tileAddText {
+  color: var(--c);
+}
+
+.dash-tileSkeleton {
+  min-height: 190px;
+  border-radius: var(--r-lg);
+}
+
+.dash-tile_breakfast.tileSkeleton,
+.dash-tile_lunch.tileSkeleton {
+  min-height: 300px;
+}
+
+.dash-tilePlus {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--c);
+  transition: transform 0.3s var(--spring);
+}
+
+.dash-tileLink:hover .dash-tilePlus {
+  transform: rotate(90deg) scale(1.08);
+}
+
+/* =========================================================
+   Habits — 이번 주 + 통계
+   ========================================================= */
+.dash-habits {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: 14px;
+  margin-top: 72px;
+}
+
+.dash-weekBox {
+  position: relative;
+  padding: 26px 26px 24px;
+  border-radius: var(--r-xl);
+  background: var(--butter-wash);
+}
+
+.dash-weekHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.dash-weekHead .chip {
+  background: #fff;
+}
+
+.dash-weekSticker {
+  position: absolute;
+  top: -18px;
+  right: 44%;
+}
+
+.dash-week {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.dash-day {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  padding: 12px 0 14px;
+  border-radius: 20px;
+  color: var(--ink-mute);
+  transition: background 0.2s var(--ease), transform 0.25s var(--spring);
+}
+
+a.day:hover {
+  background: rgba(255, 255, 255, 0.7);
+  transform: translateY(-2px);
+}
+
+.dash-wd {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.dash-dn {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.dash-dayDone {
+  background: #fff;
+}
+
+.dash-dayToday .dash-dn {
+  background: var(--ink);
+  color: #fff;
+}
+
+.dash-dayFuture {
+  opacity: 0.4;
+}
+
+.dash-dots {
+  display: grid;
+  grid-template-columns: repeat(3, 6px);
+  gap: 3px;
+  justify-content: center;
+  min-height: 15px;
+}
+
+.dash-dots i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(38, 41, 43, 0.08);
+}
+
+.dash-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.dash-stat {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 18px 20px;
+  border-radius: var(--r-lg);
+}
+
+.dash-stat dt {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+.dash-stat dd {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+.dash-stat dd span {
+  margin-right: 3px;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.dash-stat_week {
+  background: var(--mint-soft);
+}
+
+.dash-stat_streak {
+  background: var(--peach-soft);
+}
+
+.dash-stat_days {
+  background: var(--lavender);
+}
+
+.dash-stat_meals {
+  background: var(--pink);
+}
+
+/* =========================================================
+   Gallery — 최근 기록 (사진 중심)
+   ========================================================= */
+.dash-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.dash-gallery > li {
+  min-width: 0;
+}
+
+.dash-shot0 {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.dash-gallery1 .dash-shot0 {
+  grid-row: auto;
+}
+
+.dash-gallery2 > li,
+.dash-gallery3 .dash-shot1,
+.dash-gallery3 .dash-shot2,
+.dash-gallery4 .dash-shot1 {
+  grid-column: span 2;
+}
+
+.dash-gallery2 .dash-shot0 {
+  grid-row: auto;
+}
+
+.dash-shot {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.dash-shotPhoto {
+  position: relative;
+  display: block;
+  flex: 1;
+  min-height: 0;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+}
+
+.dash-shot0 .dash-shotPhoto {
+  aspect-ratio: auto;
+  min-height: 300px;
+}
+
+.dash-gallery2 .dash-shotPhoto,
+.dash-gallery3 .dash-shot1 .dash-shotPhoto,
+.dash-gallery3 .dash-shot2 .dash-shotPhoto,
+.dash-gallery4 .dash-shot1 .dash-shotPhoto,
+.dash-gallery1 .dash-shotPhoto {
+  aspect-ratio: 2 / 1;
+  min-height: 0;
+}
+
+.dash-shotPhoto svg {
+  transition: transform 0.6s var(--ease);
+}
+
+.dash-shot:hover .dash-shotPhoto svg {
+  transform: scale(1.05);
+}
+
+.dash-shotDate {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 30px;
+  padding: 0 12px;
+  border-radius: var(--r-pill);
+  background: #fff;
+  font-size: 12.5px;
+  font-weight: 800;
+}
+
+.dash-shotDate em {
+  font-style: normal;
+  color: var(--c);
+}
+
+.dash-shotBody {
+  display: grid;
+  gap: 8px;
+  padding: 12px 4px 0;
+}
+
+.dash-shotMenu {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.03em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dash-shot0 .dash-shotMenu {
+  font-size: 20px;
+  white-space: normal;
+}
+
+.dash-shotTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.dash-shotTags span {
+  height: 24px;
+  padding: 0 9px;
+  border-radius: var(--r-pill);
+  background: var(--c-wash);
+  color: var(--c);
+  font-size: 11.5px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+/* =========================================================
+   Timeline — 모든 기록
+   ========================================================= */
+.dash-month + .dash-month {
+  margin-top: 28px;
+}
+
+.dash-monthLabel {
+  display: inline-block;
+  margin: 0 0 8px 4px;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--ink-mute);
+}
+
+.dash-list {
+  display: grid;
+  gap: 4px;
+}
+
+.dash-row {
+  display: grid;
+  grid-template-columns: 56px 64px minmax(0, 1fr) auto 20px;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 14px 10px 10px;
+  border-radius: 24px;
+  transition: background 0.2s var(--ease);
+}
+
+.dash-row:hover {
+  background: var(--cloud);
+}
+
+.dash-rowDate {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  background: var(--c-wash);
+  color: var(--c);
+}
+
+.dash-rowDate span {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.dash-rowDate small {
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.dash-rowThumb {
+  display: block;
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.dash-rowBody {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.dash-rowMenu {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  font-size: 15.5px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dash-rowRel {
+  flex: none;
+  font-style: normal;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--peach);
+}
+
+.dash-rowDots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-mute);
+}
+
+.dash-rowDots span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.dash-rowDots i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--c);
+}
+
+.dash-rowCount {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--ink-mute);
+  white-space: nowrap;
+}
+
+.dash-rowCount span {
+  margin-right: 2px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.dash-rowArrow {
+  color: var(--ink-faint);
+  transition: transform 0.25s var(--spring), color 0.2s var(--ease);
+}
+
+.dash-row:hover .dash-rowArrow {
+  color: var(--ink);
+  transform: translateX(3px);
+}
+
+.dash-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.dash-moreCount {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink-mute);
+}
+
+/* =========================================================
+   First record — 기록이 없을 때
+   ========================================================= */
+.dash-first {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 40px;
+  align-items: center;
+  margin-top: 40px;
+  padding: 28px;
+  border-radius: var(--r-xl);
+  background: var(--cloud);
+}
+
+.dash-firstVisual {
+  position: relative;
+  aspect-ratio: 4 / 3;
+}
+
+.dash-firstVisual > div:first-child {
+  border-radius: var(--r-lg);
+}
+
+.dash-firstS1 {
+  position: absolute;
+  top: -18px;
+  left: -14px;
+}
+
+.dash-firstS2 {
+  position: absolute;
+  right: -16px;
+  bottom: 18%;
+}
+
+.dash-firstS3 {
+  position: absolute;
+  bottom: -18px;
+  left: 22%;
+}
+
+.dash-firstTitle {
+  margin-top: 16px;
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: -0.045em;
+}
+
+.dash-firstDesc {
+  margin-top: 12px;
+  max-width: 38ch;
+  font-size: 15px;
+  color: var(--ink-mute);
+}
+
+.dash-firstCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 28px;
+  height: 52px;
+  padding: 0 24px;
+  border-radius: var(--r-pill);
+  background: var(--mint);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  transition: background 0.2s var(--ease), transform 0.25s var(--spring);
+}
+
+.dash-firstCta:hover {
+  background: var(--mint-hover);
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+@media (max-width: 1000px) {
+  .dash-ringCard {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    text-align: center;
+  }
+
+  .dash-ringSide {
+    justify-items: center;
+  }
+
+  .dash-ringLegend {
+    grid-template-columns: repeat(5, auto);
+    justify-content: center;
+  }
+}
+
+@media (max-width: 860px) {
+  .dash-hero,
+  .dash-habits,
+  .dash-first {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .dash-hello {
+    padding: 8px 0 0;
+  }
+
+  .dash-heroSticker1 {
+    top: 0;
+    right: 0;
+  }
+
+  .dash-heroSticker2 {
+    display: none;
+  }
+
+  .dash-ringCard {
+    grid-template-columns: auto minmax(0, 1fr);
+    justify-items: stretch;
+    text-align: left;
+    gap: 18px;
+    padding: 20px;
+  }
+
+  .dash-ringWrap {
+    width: 128px;
+    height: 128px;
+  }
+
+  .dash-ringNum {
+    font-size: 36px;
+  }
+
+  .dash-ringSide {
+    justify-items: start;
+  }
+
+  .dash-ringLegend {
+    justify-content: flex-start;
+  }
+
+  .dash-section,
+  .dash-habits {
+    margin-top: 52px;
+  }
+
+  .dash-bento {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .dash-tile,
+  .dash-tile_breakfast,
+  .dash-tile_lunch {
+    grid-column: span 1;
+  }
+
+  .dash-tile_late_snack {
+    grid-column: span 2;
+  }
+
+  .dash-tileLink {
+    min-height: 160px;
+    padding: 14px;
+  }
+
+  .dash-tileEn {
+    display: none;
+  }
+
+  .dash-tileMenu {
+    font-size: 14.5px;
+  }
+
+  /* 빈 끼니는 낮게 — 기록한 끼니가 먼저 눈에 들어오도록 */
+  .dash-tileEmpty {
+    min-height: 128px;
+  }
+
+  .dash-tileAdd {
+    gap: 8px;
+    padding: 12px 0 2px;
+    font-size: 13px;
+  }
+
+  .dash-tilePlus {
+    width: 38px;
+    height: 38px;
+  }
+
+  .dash-tile_late_snack .dash-tileEmpty {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 0;
+  }
+
+  .dash-tile_late_snack .dash-tileAdd {
+    flex: none;
+    grid-auto-flow: column;
+    align-items: center;
+    padding: 0;
+  }
+
+  .dash-tile_late_snack .dash-tilePlus {
+    order: 2;
+    width: 34px;
+    height: 34px;
+  }
+
+  .dash-tileSkeleton,
+  .dash-tile_breakfast.tileSkeleton,
+  .dash-tile_lunch.tileSkeleton {
+    min-height: 200px;
+  }
+
+  .dash-tile_late_snack.tileSkeleton {
+    min-height: 64px;
+  }
+
+  /* 최근 기록은 가로로 넘겨 보기 */
+  .dash-gallery {
+    display: flex;
+    gap: 12px;
+    margin: 0 calc(var(--gutter) * -1);
+    padding: 0 var(--gutter) 4px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    scrollbar-width: none;
+  }
+
+  .dash-gallery::-webkit-scrollbar {
+    display: none;
+  }
+
+  .dash-gallery > li {
+    flex: none;
+    width: 72%;
+    scroll-snap-align: start;
+  }
+
+  .dash-gallery .dash-shotPhoto,
+  .dash-shot0 .dash-shotPhoto {
+    flex: none;
+    aspect-ratio: 4 / 3 !important;
+    min-height: 0;
+  }
+
+  .dash-shot0 .dash-shotMenu {
+    font-size: 16px;
+  }
+
+  .dash-first {
+    padding: 20px;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 600px) {
+  .dash-ringCard {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    text-align: center;
+  }
+
+  .dash-ringSide {
+    justify-items: center;
+  }
+
+  .dash-ringLegend {
+    justify-content: center;
+  }
+
+  .dash-weekBox {
+    padding: 20px 14px 16px;
+  }
+
+  .dash-weekHead {
+    padding: 0 6px;
+  }
+
+  .dash-week {
+    gap: 2px;
+  }
+
+  .dash-dn {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+
+  .dash-dots {
+    grid-template-columns: repeat(3, 5px);
+    gap: 2px;
+  }
+
+  .dash-dots i {
+    width: 5px;
+    height: 5px;
+  }
+
+  .dash-stat dd span {
+    font-size: 32px;
+  }
+
+  .dash-row {
+    grid-template-columns: 48px 52px minmax(0, 1fr) auto;
+    gap: 12px;
+    padding: 8px;
+  }
+
+  .dash-rowDate {
+    width: 48px;
+    height: 48px;
+    border-radius: 16px;
+  }
+
+  .dash-rowThumb {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+  }
+
+  .dash-rowArrow {
+    display: none;
+  }
+}
